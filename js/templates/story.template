@@ -1,0 +1,20 @@
+<div class='story'>
+
+	<span>id: {{id}}</span> <span>name: {{name}}</span>
+
+	<!-- type 1: only text -->
+	{= if (type === 1) { =}
+
+	{= } =}
+
+	<!-- type 2: only text -->
+	{= if (type === 2) { =}
+
+	{= } =}
+
+	<!-- type 3: only text -->
+	{= if (type === 3) { =}
+
+	{= } =}
+
+</div>
