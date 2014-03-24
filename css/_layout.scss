@@ -1,0 +1,40 @@
+$sansSerifStrong: "Benton Sans Bold", Helvetica, Arial, sans-serif;
+$runner: 'img/runner.png';
+$runner_width: image-width($runner);
+$runner_height: image-height($runner);
+
+.main-hed {
+	display: none;
+}
+
+#gf {
+	.title {
+		text-align: center;
+
+		span {
+			font-family: $sansSerifStrong;
+
+			&.runner {
+				background-image: inline-image($runner);
+				background-size: 100%;
+				display: inline-block;
+				background-repeat: no-repeat;
+				width: 1.35em;
+				height: 1.35em*$runner_height/$runner_width;
+				vertical-align: text-bottom;
+				margin: 0 0.25em 0 0.5em;
+
+			}
+		}
+
+		&:after {
+			// content: '';
+			// border-bottom: solid #999 1px;
+			// width: 10em;
+			// display: block;
+			// margin: 0 auto;
+		}
+	}
+}
+
+
