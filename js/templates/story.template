@@ -1,7 +1,5 @@
 <div class='story'>
 
-	<span>id: {{id}}</span> <span>name: {{name}}</span>
-
 	<!-- type 1: only text -->
 	{= if (type === 1) { =}
 
@@ -12,9 +10,19 @@
 
 	{= } =}
 
-	<!-- type 3: only text -->
+	<!-- type 3: image -->
 	{= if (type === 3) { =}
 
+		<div class='image'>
+			<img src='{{image}}' />
+		</div>
+
 	{= } =}
+
+	<div class='details'>
+		<p class='name'>{{name}}</p>
+		<p class='ageAndLocation'>{{age}}, {{location}}</p>
+		<div class='social'></div>
+	</div>
 
 </div>

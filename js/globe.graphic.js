@@ -9,7 +9,11 @@ globe.graphic = function() {
 
 			var html = [];
 			for (var i = 0; i < json.length; i++) {
-				html.push(window.JST['story.template'](json[i]));
+
+				if (json[i].type === 3) {
+					html.push(window.JST['story.template'](json[i]));
+				}
+
 			}
 
 			$('.stories', master).append(html.join(''));
