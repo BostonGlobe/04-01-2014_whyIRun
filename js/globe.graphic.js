@@ -5,7 +5,7 @@ globe.graphic = function() {
 
 	function loadMoreStories() {
 
-		$.getJSON('http://private.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013&page=' + page++, function(json) {
+		$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013&page=' + page++, function(json) {
 
 			var html = [];
 			for (var i = 0; i < json.length; i++) {

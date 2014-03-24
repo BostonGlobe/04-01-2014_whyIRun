@@ -1,0 +1,22 @@
+$sansSerifStrong: "Benton Sans Bold", Helvetica, Arial, sans-serif;
+$runner: 'img/runner.png';
+
+.main-hed {
+	display: none;
+}
+
+#gf {
+	.title {
+		text-align: center;
+
+		span {
+			font-family: $sansSerifStrong;
+
+			&.runner {
+				background-image: inline-image($runner);
+			}
+		}
+	}
+}
+
+
