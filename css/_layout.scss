@@ -2,8 +2,27 @@ $runner: 'img/runner.png';
 $runner_width: image-width($runner);
 $runner_height: image-height($runner);
 
+$facebook: 'img/facebook.png';
+$facebook_width: image-width($facebook);
+$facebook_height: image-height($facebook);
+
+$twitter: 'img/twitter.png';
+$twitter_width: image-width($twitter);
+$twitter_height: image-height($twitter);
+
 .main-hed {
 	display: none;
+}
+
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 #gf {
@@ -16,32 +35,28 @@ $runner_height: image-height($runner);
 		margin-right: auto;
 	}
 
-	.detail {
+	h2 {
 		text-align: center;
 		@include rhythm(0, 0, 0, 0);
+		font-weight: normal;
+		@include adjust-font-size-to(18px);
 
-		span {
-			font-family: $sansSerifStrong;
-			@include adjust-font-size-to(18px);
-
-			&.runner {
-				background-image: inline-image($runner);
-				background-size: 100%;
-				display: inline-block;
-				background-repeat: no-repeat;
-				width: 1.25em;
-				height: 1.25em*$runner_height/$runner_width;
-				vertical-align: text-bottom;
-				margin-left: 0.4em;
-				margin-right: 0.2em;
-
-			}
+		.runner {
+			background-image: inline-image($runner);
+			background-size: 100%;
+			display: inline-block;
+			background-repeat: no-repeat;
+			width: 1.25em;
+			height: 1.25em*$runner_height/$runner_width;
+			vertical-align: text-bottom;
+			margin-left: 0.4em;
+			margin-right: 0.2em;
 		}
 
 		&:after {
 			content: '';
 			@include trailing-border();
-			@include padding-trailer(0.25);
+			@include padding-trailer(1/4);
 			margin-left: auto;
 			margin-right: auto;
 			width: 11em;
@@ -50,31 +65,36 @@ $runner_height: image-height($runner);
 		}
 	}
 
-	.title {
+	h1 {
 		font-family: $serifStrong;
+		font-weight: normal;
 		text-align: center;
-		font-size: 4em;
-		@include rhythm(0.56, 0, 0.05, 0);
+		@include adjust-font-size-to(62px);
+		@include rhythm(3/4, 0, 0, 1/6);
 	}
 
 	.intro {
 		@include adjust-font-size-to(22px);
-		@include adjust-leading-to(1.1);
-		@include rhythm(0, 0, 0.4, 0);
+		@include adjust-leading-to(10/9);
+		@include rhythm(0, 0, 0, 1/3);
 	}
 
 	button {
-		display: block;
 		background: rgb(230, 230, 230);
 		font-family: $sansSerif;
-		@include adjust-font-size-to(16px);
-		@include adjust-leading-to(1.5);
 		text-transform: uppercase;
-		color: #999;
 		font-weight: 100;
-		padding-left: 4em; 
-		padding-right: 4em;
 		letter-spacing: 2px;
+
+		&.wide {
+			color: #999;
+			display: block;
+			@include adjust-font-size-to(16px);
+			@include adjust-leading-to(3/2);
+			padding-left: 4em; 
+			padding-right: 4em;
+		}
+
 	}
 
 	.story {
@@ -84,10 +104,12 @@ $runner_height: image-height($runner);
 		@include rhythm(2, 2, 0, 0);
 
 		.image {
-			@include rhythm(0, 0, 0.5, 0);
+			@include rhythm(0, 0, 2/3, 0);
 		}
 
 		.details {
+
+			position: relative;
 
 			> p {
 				@include rhythm(0, 0, 0, 0);
@@ -98,19 +120,44 @@ $runner_height: image-height($runner);
 				@include adjust-font-size-to(16px);
 				text-transform: uppercase;
 			}
+
+			.social {
+				position: absolute;
+				top: (1/3)*1em;
+				right: 0;
+
+				button {
+					background: #999;
+					display: inline-block;
+					margin-left: (2/3)*1em;
+					height: (15/4)*1em;
+					width: (15/4)*1em;
+					border: none;
+					position: relative;
+					cursor: pointer;
+
+					.wrapper {
+						display: inline-block;
+						width: 70%;
+						height: 70%;
+						position: absolute;
+						top: 15%;
+						left: 15%;
+						background-repeat: no-repeat;
+						background-position: 50%;
+						background-size: contain;
+					}
+
+					&.facebook .wrapper {
+						background-image: inline-image($facebook);
+					}
+
+					&.twitter .wrapper {
+						background-image: inline-image($twitter);
+					}
+
+				}
+			}
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
