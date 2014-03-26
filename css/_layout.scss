@@ -42,6 +42,11 @@ button {
 
 #gf {
 
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
 	color: #333;
 
 	h2 {
@@ -107,27 +112,73 @@ button {
 	}
 
 	button {
-		&.wide {
-			color: rgb(128, 128, 128);
-			background-color: #e6e6e6;
-			font-family: $sansSerif;
-			text-transform: uppercase;
-			margin-left: auto;
-			margin-right: auto;
-			display: block;
-			border: none;
-			@include adjust-font-size-to(18px);
-			padding-left: 2em;
-			padding-right: 2em;
-			@include rhythm(0, 1/2, 1/2, 0);
-			font-weight: 100;
-			letter-spacing: 2px;
-			border: solid #ccc 1px;
-		}
+		color: rgb(128, 128, 128);
+		background-color: #e6e6e6;
+		border: solid #ccc 1px;
+		font-family: $sansSerif;
+		text-transform: uppercase;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		@include adjust-font-size-to(18px);
+		padding-left: 2em;
+		padding-right: 2em;
+		@include rhythm(0, 1/2, 1/2, 0);
+		font-weight: 100;
+		letter-spacing: 2px;
 
 		&.loadMoreStories {
 			@include rhythm(0, 1/2, 1/2, 3/2);
 		}
+	}
+
+	.form {
+		@extend %centerColumn;
+		@include rhythm(0, 0, 1, 0);
+		display: none;
+
+		textarea,
+		input {
+			display: block;
+			@include rhythm(1, 1/4, 1/4, 1);
+			background-color: #F2F2F2;
+			border: solid #CCC 1px;
+			color: #333;
+			padding-left: (1/2)*1em;
+			padding-right: (1/2)*1em;
+			@include adjust-font-size-to(16px);
+			font-family: $sansSerif;
+		}
+
+		textarea,
+		input {
+			width: 100%;
+		}
+
+		input[name="town"],
+		input[name="age"] {
+			width: 50%;
+		}
+
+		.buttons {
+			text-align: center;
+		}
+
+		button {
+			background-color: #999;
+			color: #FFF;
+			border-color: #777;
+			display: inline-block;
+
+			&.submit {
+				margin-right: 0.5em;
+			}
+
+			&.cancel {
+				margin-left: 0.5em;
+			}
+		}
+
 	}
 
 	.story {
@@ -159,6 +210,7 @@ button {
 
 		.image {
 			@include rhythm(0, 0, 2/3, 0);
+			text-align: center;
 		}
 
 		.details {
@@ -188,10 +240,12 @@ button {
 					background: #999;
 					display: inline-block;
 					margin-left: (2/3)*1em;
-					height: (3.1)*1em;
-					width: (3.1)*1em;
+					height: 2em;
+					width: 2em;
 					border: none;
 					position: relative;
+					padding-left: 0em;
+					padding-right: 0em;
 
 					.wrapper {
 						display: inline-block;

@@ -14,10 +14,10 @@
 	<!-- type 3: image -->
 	{= if (type === 3) { =}
 
-		<p class='text'>{{photo_description}}</p>
 		<div class='image'>
 			<img src='{{image}}' />
 		</div>
+		<p class='text'>{{photo_description}}</p>
 
 	{= } =}
 

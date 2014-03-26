@@ -13,3 +13,6 @@
 - deal with video entries
 - add hover/transition effects to buttons
 - long links make page wide
+- validate form
+- swap image and text
+- deal with variable story layouts
