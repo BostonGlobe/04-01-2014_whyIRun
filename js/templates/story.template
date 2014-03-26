@@ -22,8 +22,10 @@
 	{= } =}
 
 	<div class='details'>
-		<p class='name'>{{name}}</p>
-		<p class='ageAndLocation'>{{age ? (age + ', ') : ''}}{{location}}</p>
+		<div class='info'>
+			<p class='name'>{{name}}</p>
+			<p class='ageAndLocation'>{{age ? (age + ', ') : ''}}{{location}}</p>
+		</div>
 		<div class='social'>
 			<button class='facebook'><span class='wrapper'><span class='visuallyhidden'>facebook</span></span></button>
 			<button class='twitter'><span class='wrapper'><span class='visuallyhidden'>twitter</span></span></button>

@@ -11,3 +11,5 @@
 - setup jsonp cronjob for the first 10
 - setup image compression
 - deal with video entries
+- add hover/transition effects to buttons
+- long links make page wide
