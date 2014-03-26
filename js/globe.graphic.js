@@ -8,10 +8,15 @@ globe.graphic = function() {
 		$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013&page=' + page++, function(json) {
 
 			var html = [];
+			var datum;
 			for (var i = 0; i < json.length; i++) {
 
-				if (json[i].type === 3) {
-					html.push(window.JST['story.template'](json[i]));
+				datum = json[i];
+
+				if (datum.type != 2) {
+					datum.age = datum.age || null;
+
+					html.push(window.JST['story.template'](datum));
 				}
 
 			}
