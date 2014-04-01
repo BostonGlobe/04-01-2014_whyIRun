@@ -16,3 +16,4 @@
 - validate form
 - swap image and text
 - deal with variable story layouts
+- make why button a p, so as to REALLY ENFORCE style (or make the p a button)
