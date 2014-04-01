@@ -1,9 +1,5 @@
 globe.graphic = function() {
 
-	if (Modernizr.touch) {
-		$('.gf-form-wrapper', master).appendTo('body');
-	}
-
 	// from http://api.jquery.com/jQuery.cssHooks/
 	(function( $ ) {
 
@@ -92,48 +88,15 @@ globe.graphic = function() {
 
 	$('button.why', master).click(function(e) {
 
-		function draw() {
-			slideStoriesDown();
-			$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
-		}
-
-		if (Modernizr.touch) {
-
-			// var parent = $('button.why', master).parent();
-			// parent.removeClass('sticky');
-
-			// $('html, body').animate({
-			// scrollTop: parent.offset().top
-			// }, 0).promise().done(draw);
-
-		} else {
-			draw();
-		}
+		slideStoriesDown();
+		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
 
 	});
 
-	$('button.cancel, button.title', master).click(function(e) {
+	$('button.cancel, button.title').click(function(e) {
 
-		function draw() {
-			slideStoriesUp();
-			$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
-		}
-
-		if (Modernizr.touch) {
-
-			// var parent = $('button.why', master).parent();
-
-			// $('html, body').animate({
-			// scrollTop: parent.offset().top
-			// }, 0).promise().done(function() {
-
-			// parent.addClass('sticky');
-			// draw();
-			// });
-
-		} else {
-			draw();
-		}
+		slideStoriesUp();
+		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
 
 	});
 
@@ -141,27 +104,9 @@ globe.graphic = function() {
 
 	$('button.submit', master).click(function(e) {
 
-		function draw() {
-			slideStoriesUp();
-			$('button.why', master).parent().find('.why,.title').addClass('hidden');
-			$('button.why', master).parent().find('.thanks').removeClass('hidden');
-		}
-
-		if (Modernizr.touch) {
-
-			// var parent = $('button.why', master).parent();
-
-			// $('html, body').animate({
-			// scrollTop: parent.offset().top
-			// }, 0).promise().done(function() {
-
-			// parent.removeClass('sticky');
-			// draw();
-			// });
-
-		} else {
-			draw();
-		}
+		slideStoriesUp();
+		$('button.why', master).parent().find('.why,.title').addClass('hidden');
+		$('button.why', master).parent().find('.thanks').removeClass('hidden');
 
 	});
 
