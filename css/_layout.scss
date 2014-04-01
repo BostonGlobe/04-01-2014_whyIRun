@@ -25,10 +25,6 @@ $twitter_height: image-height($twitter);
 	width: 1px;
 }
 
-button {
-	cursor: pointer;
-}
-
 %centerColumn {
 	max-width: 650px;
 	margin-left: 10px;
@@ -116,97 +112,15 @@ button {
 	.button-wrapper {
 		@include rhythm(0, 1/2, 1/2, 0);
 		background-color: white;
-		position: -webkit-sticky;
-		position:    -moz-sticky;
-		position:     -ms-sticky;
-		position:      -o-sticky;
-		top: 0px;
-		z-index: 100;
-	}
 
-	button {
-		color: rgb(128, 128, 128);
-		background-color: #e6e6e6;
-		border: solid #ccc 1px;
-		font-family: $sansSerif;
-		text-transform: uppercase;
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
-		@include adjust-font-size-to(18px);
-		padding-left: 2em;
-		padding-right: 2em;
-		@include rhythm(0, 1/2, 1/2, 0);
-		font-weight: 100;
-		letter-spacing: 2px;
-
-		&.loadMoreStories {
-			@include rhythm(0, 1/2, 1/2, 3/2);
-		}
-	}
-
-	.form-wrapper {
-		position: relative;
-		top: 0;
-		left: 0;
-		right: 0;
-
-		.form {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			@include rhythm(0, 0, 1, 1);
-			@extend %centerColumn;
-
-			textarea,
-			input {
-				display: block;
-				@include rhythm(1, 1/4, 1/4, 1);
-				background-color: #F2F2F2;
-				border: solid #CCC 1px;
-				color: #333;
-				padding-left: (1/2)*1em;
-				padding-right: (1/2)*1em;
-				@include adjust-font-size-to(16px);
-				font-family: $sansSerif;
-			}
-
-			textarea {
-				@include rhythm(0, 1/4, 1/4, 1);
-				resize: none;
-			}
-
-			textarea,
-			input {
-				width: 100%;
-			}
-
-			input[name="town"],
-			input[name="age"] {
-				width: 50%;
-			}
-
-			.buttons {
-				text-align: center;
-			}
-
-			button {
-				background-color: #999;
-				color: #FFF;
-				border-color: #777;
-				display: inline-block;
-				padding-left: 1.5em;
-				padding-right: 1.5em;
-
-				&.submit {
-					margin-right: 0.5em;
-				}
-
-				&.cancel {
-					margin-left: 0.5em;
-				}
-			}
+		&.sticky {
+			position: -webkit-sticky;
+			position:    -moz-sticky;
+			position:     -ms-sticky;
+			position:      -o-sticky;
+			position:         sticky;
+			top: 0px;
+			z-index: 100;
 		}
 	}
 
@@ -347,5 +261,102 @@ button {
 
 @include breakpoint(670px) {
 	#contain {
+	}
+}
+
+button.gf {
+	cursor: pointer;
+	color: rgb(128, 128, 128);
+	background-color: #e6e6e6;
+	border: solid #ccc 1px;
+	font-family: $sansSerif;
+	text-transform: uppercase;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	@include adjust-font-size-to(18px);
+	padding-left: 2em;
+	padding-right: 2em;
+	@include rhythm(0, 1/2, 1/2, 0);
+	font-weight: 100;
+	letter-spacing: 2px;
+
+	&.loadMoreStories {
+		@include rhythm(0, 1/2, 1/2, 3/2);
+	}
+}
+
+.gf-form-wrapper {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	// .touch & {
+	// 	position: absolute;
+	// 	background: white;
+	// 	z-index: 1000;
+	// }
+
+	.form {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		@include rhythm(0, 0, 1, 1);
+		@extend %centerColumn;
+
+		.touch & {
+			position: relative;
+		}
+
+		textarea,
+		input {
+			display: block;
+			@include rhythm(1, 1/4, 1/4, 1);
+			background-color: #F2F2F2;
+			border: solid #CCC 1px;
+			color: #333;
+			padding-left: (1/2)*1em;
+			padding-right: (1/2)*1em;
+			@include adjust-font-size-to(16px);
+			font-family: $sansSerif;
+		}
+
+		textarea {
+			@include rhythm(0, 1/4, 1/4, 1);
+			resize: none;
+		}
+
+		textarea,
+		input {
+			width: 100%;
+		}
+
+		input[name="town"],
+		input[name="age"] {
+			width: 50%;
+		}
+
+		.buttons {
+			text-align: center;
+		}
+
+		button {
+			background-color: #999;
+			color: #FFF;
+			border-color: #777;
+			display: inline-block;
+			padding-left: 1.5em;
+			padding-right: 1.5em;
+
+			&.submit {
+				margin-right: 0.5em;
+			}
+
+			&.cancel {
+				margin-left: 0.5em;
+			}
+		}
 	}
 }
