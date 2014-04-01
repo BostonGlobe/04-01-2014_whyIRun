@@ -53,6 +53,18 @@ button {
 
 	color: #333;
 
+	.thanks {
+		background: none;
+		border-color: white;
+		span {
+			@include adjust-font-size-to(12px);
+			@include adjust-leading-to(1);
+		}
+		text-transform: none;
+		letter-spacing: 0;
+		cursor: default;
+	}
+
 	h2 {
 		text-align: center;
 		@include rhythm(0, 0, 0, 0);
@@ -102,27 +114,14 @@ button {
 	}
 
 	.button-wrapper {
-		// @include trailing-border();
 		@include rhythm(0, 1/2, 1/2, 0);
 		background-color: white;
-		// border-width: 1px;
-		// border-color: #ccc;
-		// border-color: white;
 		position: -webkit-sticky;
 		position:    -moz-sticky;
 		position:     -ms-sticky;
 		position:      -o-sticky;
 		top: 0px;
 		z-index: 100;
-
-		button.title {
-			background-color: white;
-			border: solid white 1px;
-		}
-
-		&.noborder {
-			border-color: white;
-		}
 	}
 
 	button {
@@ -175,6 +174,7 @@ button {
 
 			textarea {
 				@include rhythm(0, 1/4, 1/4, 1);
+				resize: none;
 			}
 
 			textarea,
@@ -213,13 +213,13 @@ button {
 	.stories {
 		background-color: white;
 		position: relative;
-		// top: -1px;
 		z-index: 10;
 
 		border-top: solid #ccc 1px;
 
 		@include transition-property(all);
 		@include transition-duration(1s);
+		@include transition-delay(0s);
 	}
 
 	.story {

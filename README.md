@@ -12,8 +12,7 @@
 - setup image compression
 - deal with video entries
 - add hover/transition effects to buttons
-- long links make page wide
+- error: long links make page wide
 - validate form
 - swap image and text
 - deal with variable story layouts
-- make why button a p, so as to REALLY ENFORCE style (or make the p a button)

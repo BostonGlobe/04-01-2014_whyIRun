@@ -75,35 +75,40 @@ globe.graphic = function() {
 
 	loadMoreStories();
 
-	$('button.why', master).click(function(e) {
-
+	function slideStoriesDown() {
 		var form = $('.form', master);
 		var height = form.outerHeight();
 
-		var stories = $('.stories', master);
-		stories.css('transform', 'translateY(' + height + 'px)');
+		$('.stories', master).css('transform', 'translateY(' + height + 'px)');
+	}
 
-		$('button.why', master).toggleClass('hidden')
-			.parent().toggleClass('noborder')
-			.find('.title').toggleClass('hidden');
+	function slideStoriesUp() {
+		$('.stories', master).css('transform', 'translateY(0px)');
+	}
+
+	$('button.why', master).click(function(e) {
+
+		slideStoriesDown();
+		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
 
 	});
 
-	$('button.cancel', master).click(function(e) {
+	$('button.cancel, button.title', master).click(function(e) {
 
-		var form = $('.form', master);
-		var height = form.outerHeight();
-
-		var stories = $('.stories', master);
-		stories.css('transform', 'translateY(0px)');
-
-		$('button.why', master).toggleClass('hidden')
-			.parent().toggleClass('noborder')
-			.find('.title').toggleClass('hidden');
+		slideStoriesUp();
+		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
 
 	});
 
 	$('button.loadMoreStories', master).click(loadMoreStories);
+
+	$('button.submit', master).click(function(e) {
+
+		slideStoriesUp();
+		$('button.why', master).parent().find('.why,.title').addClass('hidden');
+		$('button.why', master).parent().find('.thanks').removeClass('hidden');
+
+	});
 
 };
 
