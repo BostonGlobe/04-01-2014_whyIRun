@@ -76,7 +76,7 @@ globe.graphic = function() {
 	loadMoreStories();
 
 	function slideStoriesDown() {
-		var form = $('.form', master);
+		var form = $('form', master);
 		var height = form.outerHeight();
 
 		$('.stories', master).css('transform', 'translateY(' + height + 'px)');
@@ -88,12 +88,16 @@ globe.graphic = function() {
 
 	$('button.why', master).click(function(e) {
 
+		e.preventDefault();
+
 		slideStoriesDown();
 		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
 
 	});
 
 	$('button.cancel, button.title').click(function(e) {
+
+		e.preventDefault();
 
 		slideStoriesUp();
 		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
@@ -104,9 +108,25 @@ globe.graphic = function() {
 
 	$('button.submit', master).click(function(e) {
 
-		slideStoriesUp();
-		$('button.why', master).parent().find('.why,.title').addClass('hidden');
-		$('button.why', master).parent().find('.thanks').removeClass('hidden');
+		e.preventDefault();
+
+		// perform validation here
+
+		// slideStoriesUp();
+		// $('button.why', master).parent().find('.why,.title').addClass('hidden');
+		// $('button.why', master).parent().find('.thanks').removeClass('hidden');
+
+		// // prepare data
+
+		// $('form', master).ajaxSubmit({
+		// 	beforeSubmit: function(array, $form, options) {
+		// 		return true;
+		// 	},
+		// 	data: {
+		// 		type: 1,
+		// 		year: 2014
+		// 	}
+		// });
 
 	});
 

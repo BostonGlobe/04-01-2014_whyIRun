@@ -142,7 +142,7 @@ $twitter_height: image-height($twitter);
 		left: 0;
 		right: 0;
 
-		.form {
+		form {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -161,6 +161,22 @@ $twitter_height: image-height($twitter);
 				padding-right: (1/2)*1em;
 				@include adjust-font-size-to(16px);
 				font-family: $sansSerif;
+			}
+
+			input[type="file"] {
+				line-height: 1em;
+				@include rhythm(0, 1/2, 1/2, 0);
+			}
+
+			label {
+				color: #333;
+				font-family: $sansSerif;
+				margin-right: 0.5em;
+
+				input {
+					display: inline-block;
+					width: inherit;
+				}
 			}
 
 			textarea {

@@ -11,17 +11,19 @@
 	</div>
 
 	<div class='form-wrapper'>
-		<div class='form'>
-			<textarea name='words' placeholder='Why do you run?'></textarea>
+
+		<form action='http://www.boston.com/newsprojects/whyirun/submit.php' method='POST'>
+			<textarea name='text' placeholder='Why do you run?'></textarea>
+			<!-- <label>Share your photo: <input name='image' type='file' /></label> -->
 			<input name='name' type='text' placeholder='Name' />
-			<input name='town' type='text' placeholder='Town/City' />
-			<input name='age' type='text' placeholder='Age' />
-			<input name='email' type='text' placeholder='Email' />
+			<!-- <input name='location' type='text' placeholder='Town/City' /> -->
+			<!-- <input name='age' type='text' placeholder='Age' /> -->
+			<!-- <input name='email' type='text' placeholder='Email' /> -->
 			<div class='buttons'>
 				<button class='submit'>Submit</button>
 				<button class='cancel'>Cancel</button>
 			</div>
-		</div>
+		</form>
 	</div>
 
 	<div class='stories'></div>

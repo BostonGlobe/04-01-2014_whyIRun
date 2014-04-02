@@ -2,7 +2,6 @@
 
 ## TODO
 
-- what happens when name is too long? might push social buttons off
 - add "loading" message, and don't display "load more stories" until we display the first batch
 - add entry popup
 - add entry icon
@@ -13,6 +12,10 @@
 - deal with video entries
 - add hover/transition effects to buttons
 - error: long links make page wide
-- validate form
 - swap image and text
 - deal with variable story layouts
+- styling: put "share your photo" inside box
+
+
+- make sure image is jpg or jpeg (??)
+- set to type 2

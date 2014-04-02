@@ -1,6 +1,7 @@
 {
   "name": "04-01-2014-whyirun",
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "jquery-form": "malsup/form#~3.46.0"
+  }
 }
-
