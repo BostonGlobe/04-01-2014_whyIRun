@@ -150,17 +150,43 @@ $twitter_height: image-height($twitter);
 			@include rhythm(0, 0, 1, 1);
 			@extend %centerColumn;
 
+			label {
+				@include rhythm(1, 0, 0, 1);
+				overflow: hidden;
+			}
+
+			.required {
+				font-weight: bold;
+			}
+
+			.error {
+				display: inline-block;
+				float: right;
+				color: #fb7600;
+
+				&.hidden {
+					display: none;
+				}
+			}
+
+
+			label,
 			textarea,
 			input {
+				width: 100%;
 				display: block;
-				@include rhythm(1, 1/4, 1/4, 1);
-				background-color: #F2F2F2;
-				border: solid #CCC 1px;
 				color: #333;
-				padding-left: (1/2)*1em;
-				padding-right: (1/2)*1em;
 				@include adjust-font-size-to(16px);
 				font-family: $sansSerif;
+			}
+
+			textarea,
+			input {
+				background-color: #F2F2F2;
+				border: solid #CCC 1px;
+				padding-left: (1/2)*1em;
+				padding-right: (1/2)*1em;
+				@include rhythm(0, 1/4, 1/4, 0);
 			}
 
 			input[type="file"] {
@@ -168,30 +194,8 @@ $twitter_height: image-height($twitter);
 				@include rhythm(0, 1/2, 1/2, 0);
 			}
 
-			label {
-				color: #333;
-				font-family: $sansSerif;
-				margin-right: 0.5em;
-
-				input {
-					display: inline-block;
-					width: inherit;
-				}
-			}
-
 			textarea {
-				@include rhythm(0, 1/4, 1/4, 1);
 				resize: none;
-			}
-
-			textarea,
-			input {
-				width: 100%;
-			}
-
-			input[name="town"],
-			input[name="age"] {
-				width: 50%;
 			}
 
 			.buttons {

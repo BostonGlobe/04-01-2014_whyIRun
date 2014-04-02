@@ -76,10 +76,7 @@ globe.graphic = function() {
 	loadMoreStories();
 
 	function slideStoriesDown() {
-		var form = $('form', master);
-		var height = form.outerHeight();
-
-		$('.stories', master).css('transform', 'translateY(' + height + 'px)');
+		$('.stories', master).css('transform', 'translateY(' + $('form', master).outerHeight() + 'px)');
 	}
 
 	function slideStoriesUp() {
@@ -110,23 +107,43 @@ globe.graphic = function() {
 
 		e.preventDefault();
 
-		// perform validation here
+		$('form', master).ajaxSubmit({
+			beforeSubmit: function(array, $form, options) {
 
-		// slideStoriesUp();
-		// $('button.why', master).parent().find('.why,.title').addClass('hidden');
-		// $('button.why', master).parent().find('.thanks').removeClass('hidden');
+				var isValid = true;
 
-		// // prepare data
+				// find all form <label> elements that have a .required element
+				$('label', $form).filter(function() {
+					return $(this).find('.required').length;
+				}).each(function(index, element) {
 
-		// $('form', master).ajaxSubmit({
-		// 	beforeSubmit: function(array, $form, options) {
-		// 		return true;
-		// 	},
-		// 	data: {
-		// 		type: 1,
-		// 		year: 2014
-		// 	}
-		// });
+					// find the input or textarea
+					var field = $('input, textarea', element);
+
+					// if field is empty, show message and invalidate the entire form
+					if (!field.val().length) {
+						isValid = false;
+						field.parent().find('.error').removeClass('hidden');
+					}
+
+				});
+
+				return false;
+			},
+			data: {
+				video_link: '',
+				video_description: '',
+				photo_description: '',
+				email: '',
+				type: 1,
+				year: 2014
+			},
+			success: function() {
+				slideStoriesUp();
+				$('button.why', master).parent().find('.why,.title').addClass('hidden');
+				$('button.why', master).parent().find('.thanks').removeClass('hidden');
+			}
+		});
 
 	});
 
