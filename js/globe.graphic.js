@@ -1,5 +1,25 @@
 globe.graphic = function() {
 
+	var opts = {
+		lines: 12, // The number of lines to draw
+		length: 11, // The length of each line
+		width: 5, // The line thickness
+		radius: 14, // The radius of the inner circle
+		corners: 1, // Corner roundness (0..1)
+		rotate: 0, // The rotation offset
+		direction: 1, // 1: clockwise, -1: counterclockwise
+		color: '#000', // #rgb or #rrggbb or array of colors
+		speed: 1.5, // Rounds per second
+		trail: 40, // Afterglow percentage
+		shadow: false, // Whether to render a shadow
+		hwaccel: true, // Whether to use hardware acceleration
+		className: 'spinner', // The CSS class to assign to the spinner
+		zIndex: 2e9, // The z-index (defaults to 2000000000)
+		top: '50%', // Top position relative to parent in px
+		left: '50%' // Left position relative to parent in px
+	};
+	var spinner = new Spinner(opts).spin($('.loading').get(0));
+
 	// from http://api.jquery.com/jQuery.cssHooks/
 	(function( $ ) {
 
@@ -59,17 +79,21 @@ globe.graphic = function() {
 					datum.age = datum.age || null;
 
 					html.push(window.JST['story.template'](datum));
+
 				}
 
 			}
 
+			spinner.stop();
+			$('.loading').addClass('hidden');
+
 			$('.stories', master).append(html.join(''));
+			$('form', master).parent().removeClass('hidden');
+			$('button.loadMoreStories', master).removeClass('hidden');
 
 		});
 
 	}
-
-	loadMoreStories();
 
 	function slideStoriesDown() {
 		$('.stories', master).css('transform', 'translateY(' + $('form', master).outerHeight() + 'px)');
@@ -167,5 +191,7 @@ globe.graphic = function() {
 		});
 
 	});
+
+	loadMoreStories();
 
 };

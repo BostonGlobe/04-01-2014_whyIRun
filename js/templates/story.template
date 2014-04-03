@@ -27,8 +27,8 @@
 			<p class='ageAndLocation'>{{age ? (age + ', ') : ''}}{{location}}</p>
 		</div>
 		<div class='social'>
-			<button class='gf facebook'><span class='wrapper'><span class='visuallyhidden'>facebook</span></span></button>
-			<button class='gf twitter'><span class='wrapper'><span class='visuallyhidden'>twitter</span></span></button>
+			<!-- <button class='gf facebook'><span class='wrapper'><span class='visuallyhidden'>facebook</span></span></button> -->
+			<!-- <button class='gf twitter'><span class='wrapper'><span class='visuallyhidden'>twitter</span></span></button> -->
 		</div>
 	</div>
 

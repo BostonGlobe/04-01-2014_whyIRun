@@ -38,6 +38,17 @@ $twitter_height: image-height($twitter);
 
 #gf {
 
+	.loading {
+		position: relative;
+		width: 50%;
+		height: 16em;
+		margin: 0 auto;
+	}
+
+	br {
+		display: block;
+	}
+
 	p {
 		margin: 0;
 		padding: 0;
@@ -236,6 +247,8 @@ $twitter_height: image-height($twitter);
 		@include transition-property(all);
 		@include transition-duration(1s);
 		@include transition-delay(0s);
+
+
 	}
 
 	.story {
@@ -358,10 +371,5 @@ $twitter_height: image-height($twitter);
 		#source-and-credit {
 			right: 0;
 		}
-	}
-}
-
-@include breakpoint(670px) {
-	#contain {
 	}
 }
