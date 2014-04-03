@@ -62,36 +62,42 @@ globe.graphic = function() {
 
 	})( jQuery );
 
-	var page = 1;
 	var master = $('#gf');
+	var stories;
+	var isLoaded = false;
 
 	function loadMoreStories() {
 
-		$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2014&page=' + page++, function(json) {
+		// show 10 stories, or all, whichever is smaller
+		var count = Math.min(10, stories.length);
 
-			var html = [];
-			var datum;
-			for (var i = 0; i < json.length; i++) {
+		// this will hold all the html strings
+		var html = [];
 
-				datum = json[i];
+		// process one story at a time
+		while (count--) {
+			html.push(window.JST['story.template'](stories.pop()));
+		}
 
-				if (datum.type != 2) {
-					datum.age = datum.age || null;
-
-					html.push(window.JST['story.template'](datum));
-
-				}
-
-			}
-
+		// after first call, hide spinner, enable form
+		if (!isLoaded) {
 			spinner.stop();
 			$('.loading').addClass('hidden');
-
-			$('.stories', master).append(html.join(''));
 			$('form', master).parent().removeClass('hidden');
-			$('button.loadMoreStories', master).removeClass('hidden');
+			isLoaded = !isLoaded;
+		}
 
-		});
+		// add stories to dom
+		$('.stories', master).append(html.join(''));
+
+		// do we still have stories to show?
+		if (stories.length) {
+			$('button.loadMoreStories', master).removeClass('hidden');
+			$('p.noMoreStories', master).addClass('hidden');
+		} else {
+			$('button.loadMoreStories', master).addClass('hidden');
+			$('p.noMoreStories', master).removeClass('hidden');
+		}
 
 	}
 
@@ -192,6 +198,11 @@ globe.graphic = function() {
 
 	});
 
-	loadMoreStories();
+	$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013', function(json) {
+
+		stories = json.reverse();
+		loadMoreStories();
+
+	});
 
 };

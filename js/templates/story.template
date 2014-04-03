@@ -5,12 +5,6 @@
 		<p class='text'>{{text}}</p>
 	{= } =}
 
-	<!-- type 2: video -->
-	{= if (type === 2) { =}
-		TYPE 2
-
-	{= } =}
-
 	<!-- type 3: image -->
 	{= if (type === 3) { =}
 

@@ -124,6 +124,22 @@ $twitter_height: image-height($twitter);
 		@include rhythm(0, 1/2, 1/2, 0);
 	}
 
+	p.noMoreStories {
+		text-align: center;
+		color: rgb(128, 128, 128);
+		font-family: $sansSerif;
+		text-transform: uppercase;
+		margin-left: auto;
+		margin-right: auto;
+		@include adjust-font-size-to(18px);
+
+		padding-left: 2em;
+		padding-right: 2em;
+		@include rhythm(0, 1/2, 1, 0);
+		font-weight: 100;
+		letter-spacing: 2px;
+	}
+
 	button {
 		cursor: pointer;
 		color: rgb(128, 128, 128);
