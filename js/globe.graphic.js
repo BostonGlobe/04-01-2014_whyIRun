@@ -112,6 +112,19 @@ globe.graphic = function() {
 
 	});
 
+	// check image size
+	var imageInput = $('form', master).find('input[name="image"]');
+	imageInput.change(function() {
+
+		var field = $(this).get(0);
+		if (window.FileReader && field.files && field.files[0] && field.files[0].size > 1000000) {
+			$(this).parent().find('.error').removeClass('hidden');
+		} else {
+			$(this).parent().find('.error').addClass('hidden');
+		}
+
+	});
+
 	$('button.submit', master).click(function(e) {
 
 		e.preventDefault();
@@ -131,14 +144,19 @@ globe.graphic = function() {
 
 				});
 
+				// check image size
+				if (!imageInput.parent().find('.error').hasClass('hidden')) {
+					isValid = false;
+				}
+
 				return isValid;
 			},
 			data: {
 				video_link: '',
 				video_description: '',
-				photo_description: $('form input[name="image"]', master).val().length ? $('form textarea', master).val() : '',
+				photo_description: imageInput.val().length ? $('form textarea', master).val() : '',
 				email: '',
-				type: $('form input[name="image"]', master).val().length ? 3 : 1,
+				type: imageInput.val().length ? 3 : 1,
 				year: 2014
 			},
 			success: function() {
