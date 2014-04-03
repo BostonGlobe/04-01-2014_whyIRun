@@ -3,10 +3,6 @@ globe.graphic = function() {
 	// from http://api.jquery.com/jQuery.cssHooks/
 	(function( $ ) {
 
-		if ( !$.cssHooks ) {
-			throw( new Error( "jQuery 1.4.3+ is needed for this plugin to work" ) );
-		}
-
 		function styleSupport( prop ) {
 			var vendorProp, supportedProp,
 				capProp = prop.charAt( 0 ).toUpperCase() + prop.slice( 1 ),
@@ -51,7 +47,7 @@ globe.graphic = function() {
 
 	function loadMoreStories() {
 
-		$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013&page=' + page++, function(json) {
+		$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2014&page=' + page++, function(json) {
 
 			var html = [];
 			var datum;
@@ -103,6 +99,19 @@ globe.graphic = function() {
 
 	$('button.loadMoreStories', master).click(loadMoreStories);
 
+	var requiredFields = $('form', master).find('input, textarea').filter(function() {
+		return $(this).parent().find('.required').length;
+	});
+
+	requiredFields.change(function() {
+
+		// if this isn't empty, remove the error field
+		if ($(this).val().length) {
+			$(this).parent().find('.error').addClass('hidden');
+		}
+
+	});
+
 	$('button.submit', master).click(function(e) {
 
 		e.preventDefault();
@@ -112,30 +121,24 @@ globe.graphic = function() {
 
 				var isValid = true;
 
-				// find all form <label> elements that have a .required element
-				$('label', $form).filter(function() {
-					return $(this).find('.required').length;
-				}).each(function(index, element) {
-
-					// find the input or textarea
-					var field = $('input, textarea', element);
+				requiredFields.each(function() {
 
 					// if field is empty, show message and invalidate the entire form
-					if (!field.val().length) {
+					if (!$(this).val().length) {
 						isValid = false;
-						field.parent().find('.error').removeClass('hidden');
+						$(this).parent().find('.error').removeClass('hidden');
 					}
 
 				});
 
-				return false;
+				return isValid;
 			},
 			data: {
 				video_link: '',
 				video_description: '',
-				photo_description: '',
+				photo_description: $('form input[name="image"]', master).val().length ? $('form textarea', master).val() : '',
 				email: '',
-				type: 1,
+				type: $('form input[name="image"]', master).val().length ? 3 : 1,
 				year: 2014
 			},
 			success: function() {

@@ -134,6 +134,11 @@ $twitter_height: image-height($twitter);
 		&.loadMoreStories {
 			@include rhythm(0, 1/2, 1/2, 3/2);
 		}
+
+		& span.important {
+			display: block;
+			font-weight: bold;
+		}
 	}
 
 	.form-wrapper {

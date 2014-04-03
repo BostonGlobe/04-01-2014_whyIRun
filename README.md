@@ -16,6 +16,11 @@
 - deal with variable story layouts
 - styling: put "share your photo" inside box
 
+- strip out all html characters
+
 
 - make sure image is jpg or jpeg (??)
 - set to type 2
+- limit image size (is this even possible????)
+- when clicking the "tell us why you run", scroll screen up a bit
+- add a bit of fadein animation to orange error message

@@ -1,11 +1,11 @@
 <div class='story'>
 
-	<!-- type 1: only text -->
+	<!-- type 1: text -->
 	{= if (type === 1) { =}
 		<p class='text'>{{text}}</p>
 	{= } =}
 
-	<!-- type 2: only text -->
+	<!-- type 2: video -->
 	{= if (type === 2) { =}
 		TYPE 2
 
