@@ -251,7 +251,7 @@ globe.graphic = function() {
 			return element.id === id;
 		})[0];
 
-		var href = window.location.href;
+		var href = window.location.href.split('#')[0];
 
 		var url = encodeURIComponent(href + '#' + id);
 		var text = encodeURIComponent("Running this year's Boston marathon? Read " + story.name + "'s story at Why I Run via @BostonGlobe");
