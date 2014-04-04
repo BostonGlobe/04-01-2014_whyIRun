@@ -250,7 +250,7 @@ globe.graphic = function() {
 
 	});
 
-	master.on('click', '.twitter', function() {
+	master.on('click', '.twitter,.facebook', function() {
 
 		// get the id
 		var id = $(this).parents('.story').data('id');
@@ -265,9 +265,19 @@ globe.graphic = function() {
 		var url = encodeURIComponent(href + '#' + id);
 		var text = encodeURIComponent("Running this year's Boston marathon? Read " + story.name + "'s story at Why I Run via @BostonGlobe");
 
-		var intent = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + url;
+		if ($(this).hasClass('twitter')) {
+	
+			var intent = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + url;
 
-		window.open(intent, '', 'width=550px,height=420px');
+			window.open(intent, '', 'width=550px,height=420px');
+	
+		}
+
+		if ($(this).hasClass('facebook')) {
+
+			window.location = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&t=' + text;
+			
+		}
 
 	});
 
