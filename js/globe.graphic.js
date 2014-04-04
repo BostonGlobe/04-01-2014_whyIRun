@@ -22,6 +22,13 @@ globe.graphic = function() {
 	};
 	var spinner = new Spinner(opts).spin($('.loading').get(0));
 
+	// from http://css-tricks.com/snippets/jquery/smooth-scrolling/
+	function smoothScroll(target) {
+		$('html,body').animate({
+			scrollTop: target.offset().top - 20
+		}, 1000);
+	}
+
 	// from http://api.jquery.com/jQuery.cssHooks/
 	(function( $ ) {
 
@@ -143,6 +150,8 @@ globe.graphic = function() {
 	$('button.why', master).click(function(e) {
 
 		e.preventDefault();
+
+		smoothScroll($(this));
 
 		slideStoriesDown();
 		$('button.why', master).parent().find('.why,.title').toggleClass('hidden');
