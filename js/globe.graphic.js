@@ -1,5 +1,7 @@
 globe.graphic = function() {
 
+	var rawData;
+
 	var opts = {
 		lines: 12, // The number of lines to draw
 		length: 11, // The length of each line
@@ -66,13 +68,35 @@ globe.graphic = function() {
 	var stories;
 	var isLoaded = false;
 
-	function loadMoreStories() {
-
-		// show 10 stories, or all, whichever is smaller
-		var count = Math.min(10, stories.length);
+	function loadMoreStories(id) {
 
 		// this will hold all the html strings
 		var html = [];
+
+		// try finding the story with given id
+		var story = $.grep(stories, function(element) {
+			return element.id === id;
+		});
+
+		var count;
+
+		// did we find a story?
+		if (story && story.length) {
+			var datum = story[0];
+			datum.featured = true;
+			html.push(window.JST['story.template'](datum));
+
+			stories = $.grep(stories, function(element) {
+				return element.id != id;
+			});
+
+			// and then show 3 more
+			count = Math.min(3, stories.length);
+
+		} else {
+			// show 10 stories, or all, whichever is smaller
+			count = Math.min(10, stories.length);
+		}
 
 		// process one story at a time
 		while (count--) {
@@ -90,6 +114,10 @@ globe.graphic = function() {
 		// add stories to dom
 		$('.stories', master).append(html.join(''));
 
+		setTimeout(function() {
+			$('.story').removeClass('featured');
+		}, 1000);
+
 		// do we still have stories to show?
 		if (stories.length) {
 			$('button.loadMoreStories', master).removeClass('hidden');
@@ -102,11 +130,14 @@ globe.graphic = function() {
 	}
 
 	function slideStoriesDown() {
-		$('.stories', master).css('transform', 'translateY(' + $('form', master).outerHeight() + 'px)');
+		var height = $('form', master).outerHeight();
+		$('.stories', master).css('transform', 'translateY(' + height + 'px)');
+		$('.storiesSpacer').height(height);
 	}
 
 	function slideStoriesUp() {
 		$('.stories', master).css('transform', 'translateY(0px)');
+		$('.storiesSpacer').height(0);
 	}
 
 	$('button.why', master).click(function(e) {
@@ -210,10 +241,45 @@ globe.graphic = function() {
 
 	});
 
+	master.on('click', '.twitter', function() {
+
+		// get the id
+		var id = $(this).parents('.story').data('id');
+
+		// get the story
+		var story = $.grep(rawData, function(element) {
+			return element.id === id;
+		})[0];
+
+		var href = window.location.href;
+
+		var url = encodeURIComponent(href + '#' + id);
+		var text = encodeURIComponent("Running this year's Boston marathon? Read " + story.name + "'s story, and many more, at Why I Run: a @BostonGlobe feature");
+
+		var intent = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + url;
+
+		window.open(intent, '', 'width=550px,height=420px');
+
+	});
+
+
 	$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013', function(json) {
 
+		for (var i = 0; i < json.length; i++) {
+			json[i].featured = false;
+		}
+
+		rawData = json;
 		stories = json.reverse();
-		loadMoreStories();
+
+		// is there a hash in the url?
+		var id = window.location.hash && window.location.hash.length
+			// yes - assume it's an id, load that one particular story
+			? +window.location.hash.substring(1)
+			// no
+			: null;
+
+		loadMoreStories(id);
 
 	});
 

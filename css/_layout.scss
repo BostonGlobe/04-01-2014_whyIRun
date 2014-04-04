@@ -263,8 +263,6 @@ $twitter_height: image-height($twitter);
 		@include transition-property(all);
 		@include transition-duration(1s);
 		@include transition-delay(0s);
-
-
 	}
 
 	.story {
@@ -276,15 +274,24 @@ $twitter_height: image-height($twitter);
 		@extend %centerColumn;
 		overflow: hidden;
 
+		@include transition-property(background-color);
+		@include transition-duration(5s);
+		@include transition-delay(0s);
+
 		&:first-child {
-			@include leading-border(0px);
-			@include rhythm(1, 0, 0, 0);
+			@include leading-border(0px, 0);
+			border-top-width: 0px;
 		}
 
 		&:last-child {
 			@include trailing-border();
-			border-width: 1px;
-			@include rhythm(2, 2, 2, 2);
+			border-bottom-width: 1px;
+			@include padding-trailer(2);
+			@include margin-trailer(2);
+		}
+
+		&.featured {
+			background-color: #f2f2e8;
 		}
 
 		.text {

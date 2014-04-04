@@ -1,4 +1,4 @@
-<div class='story'>
+<div class='story{{featured ? ' featured' : '' }}' data-id='{{id}}'>
 
 	<!-- type 1: text -->
 	{= if (type === 1) { =}
@@ -21,8 +21,8 @@
 			<p class='ageAndLocation'>{{age ? (age + ', ') : ''}}{{location}}</p>
 		</div>
 		<div class='social'>
-			<!-- <button class='gf facebook'><span class='wrapper'><span class='visuallyhidden'>facebook</span></span></button> -->
-			<!-- <button class='gf twitter'><span class='wrapper'><span class='visuallyhidden'>twitter</span></span></button> -->
+			<!-- <button class='facebook'><span class='wrapper'><span class='visuallyhidden'>facebook</span></span></button> -->
+			<button class='twitter'><span class='wrapper'><span class='visuallyhidden'>twitter</span></span></button>
 		</div>
 	</div>
 
