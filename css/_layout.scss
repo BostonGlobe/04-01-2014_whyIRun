@@ -116,6 +116,7 @@ $twitter_height: image-height($twitter);
 		@include adjust-font-size-to(22px);
 		@include adjust-leading-to(10/9);
 		@include rhythm(0, 0, 0, 1/2);
+		text-align: center;
 
 		@extend %centerColumn;
 	}
@@ -232,6 +233,12 @@ $twitter_height: image-height($twitter);
 
 			.buttons {
 				text-align: center;
+			}
+
+			p {
+				text-align: left;
+				font-family: $sansSerif;
+				@include rhythm(0, 0, 1/2, 0);
 			}
 
 			button {

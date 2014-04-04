@@ -149,12 +149,12 @@ gulp.task('minify', function() {
 
 		// uglify js
 		.pipe(jsFilter)
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(jsFilter.restore())
 
 		// minify css
 		.pipe(cssFilter)
-		.pipe(csso())
+		// .pipe(csso())
 		.pipe(cssFilter.restore())
 
 		// complete useref
@@ -163,7 +163,17 @@ gulp.task('minify', function() {
 		.pipe(gulp.dest('.'))
 
 		// smoosh html
-		.pipe(smoosher())
+		.pipe(smoosher({
+			cssTags: {
+				begin: '<p:style>',
+				end: '</p:style>'
+			}
+			// ,
+			// jsTags: {
+			// 	begin: '<p:script>',
+			// 	end: '</p:script>'
+			// }
+		}))
 		.pipe(gulp.dest('.'));
 });
 

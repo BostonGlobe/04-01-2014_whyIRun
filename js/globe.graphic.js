@@ -1,6 +1,6 @@
 globe.graphic = function() {
 
-	var rawData;
+	var rawData = [];
 
 	var opts = {
 		lines: 12, // The number of lines to draw
@@ -254,7 +254,7 @@ globe.graphic = function() {
 		var href = window.location.href;
 
 		var url = encodeURIComponent(href + '#' + id);
-		var text = encodeURIComponent("Running this year's Boston marathon? Read " + story.name + "'s story, and many more, at Why I Run: a @BostonGlobe feature");
+		var text = encodeURIComponent("Running this year's Boston marathon? Read " + story.name + "'s story at Why I Run via @BostonGlobe");
 
 		var intent = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + url;
 
@@ -262,22 +262,21 @@ globe.graphic = function() {
 
 	});
 
-
-	$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2013', function(json) {
+	$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2014', function(json) {
 
 		for (var i = 0; i < json.length; i++) {
 			json[i].featured = false;
+			rawData.push(json[i]);
 		}
 
-		rawData = json;
 		stories = json.reverse();
 
 		// is there a hash in the url?
-		var id = window.location.hash && window.location.hash.length
+		var id = window.location.hash && window.location.hash.length ?
 			// yes - assume it's an id, load that one particular story
-			? +window.location.hash.substring(1)
+			+window.location.hash.substring(1) :
 			// no
-			: null;
+			null;
 
 		loadMoreStories(id);
 
