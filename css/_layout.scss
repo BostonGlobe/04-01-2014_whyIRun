@@ -196,9 +196,14 @@ $twitter_height: image-height($twitter);
 				display: inline-block;
 				float: right;
 				color: #fb7600;
+				opacity: 1;
+
+				@include transition-property(opacity);
+				@include transition-duration(0.1s);
+				@include transition-delay(0s);
 
 				&.hidden {
-					display: none;
+					opacity: 0;
 				}
 			}
 
