@@ -6,6 +6,7 @@ Please note: do not reproduce Boston Globe logos or fonts without written permis
 
 ## Setup
 
+- `npm install`
 - `gulp` to run the development server.
 - `gulp prod` to prepare the production version.
 
