@@ -158,19 +158,7 @@ globe.graphic = function() {
 
 	});
 
-	$('button.cancel').click(function(e) {
-
-		e.preventDefault();
-
-		// clear validation
-		$('form', master).parent().find('.error').addClass('hidden');
-
-		// clear form
-		$('form input,textarea', master).val('');
-
-	});
-
-	$('button.cancel, button.title').click(function(e) {
+	$('button.title').click(function(e) {
 
 		e.preventDefault();
 
