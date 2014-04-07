@@ -4,9 +4,11 @@ This graphic was generated with [generator-globegraphic](https://github.com/Bost
 
 Please note: do not reproduce Boston Globe logos or fonts without written permission.
 
-## Setup
+## Install
 
 - `npm install`
+
+## Usage
 - `gulp` to run the development server.
 - `gulp prod` to prepare the production version.
 
