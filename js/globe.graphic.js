@@ -269,7 +269,7 @@ globe.graphic = function() {
 
 	});
 
-	$.getJSON('http://www.boston.com/newsprojects/whyirun/get_stories_api.php?year=2014', function(json) {
+	window.whyIRun = function(json) {
 
 		for (var i = 0; i < json.length; i++) {
 			json[i].featured = false;
@@ -286,7 +286,8 @@ globe.graphic = function() {
 			null;
 
 		loadMoreStories(id);
+	};
 
-	});
+	$.getJSON('http://cache.boston.com/partners/whyirun.jsonp?callback=?');
 
 };
