@@ -18,7 +18,7 @@
 	<div class='details'>
 		<div class='info'>
 			<p class='name'>{{name}}</p>
-			<p class='ageAndLocation'>{{age ? (age + ', ') : ''}}{{location}}</p>
+			<p class='ageAndLocation'>{{age ? age : ''}}{{age && location ? ', ' : ''}}{{location}}</p>
 		</div>
 		<div class='social'>
 			<button class='facebook'><span class='wrapper'><span class='visuallyhidden'>facebook</span></span></button>
