@@ -195,6 +195,17 @@ globe.graphic = function() {
 
 	});
 
+	var ageInput = $('form', master).find('input[name="age"]');
+	ageInput.change(function() {
+
+		if (isNaN($(this).val())) {
+			$(this).parent().find('.error').removeClass('hidden');
+		} else {
+			$(this).parent().find('.error').addClass('hidden');
+		}
+
+	});
+
 	$('button.submit', master).click(function(e) {
 
 		e.preventDefault();
@@ -216,6 +227,11 @@ globe.graphic = function() {
 
 				// check image size
 				if (!imageInput.parent().find('.error').hasClass('hidden')) {
+					isValid = false;
+				}
+
+				// check age
+				if (!ageInput.parent().find('.error').hasClass('hidden')) {
 					isValid = false;
 				}
 
