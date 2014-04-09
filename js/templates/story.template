@@ -1,7 +1,7 @@
 <div class='story{{featured ? ' featured' : '' }}' data-id='{{id}}'>
 
 	<!-- type 1: text -->
-	{= if (type === 1) { =}
+	{= if (type === 1 || type === 0) { =}
 		<p class='text'>{{text}}</p>
 	{= } =}
 
