@@ -1,4 +1,6 @@
-# 04-01-2014_whyIRun
+# [04-01-2014_whyIRun](http://www.bostonglobe.com/2014/04/04/whyirun/wSIhCrN7mDrBA3I4MobCiO/story.html)
+
+![Why I Run](https://cloud.githubusercontent.com/assets/370976/2646845/cda85772-bf43-11e3-9f54-bbe6ef33ddeb.png)
 
 This graphic was generated with [generator-globegraphic](https://github.com/BostonGlobe/generator-globegraphic).
 
